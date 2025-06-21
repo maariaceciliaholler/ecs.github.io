@@ -117,4 +117,4 @@ Como dev, você deve garantir que ele seja:
 - 🔄 Revogável e controlável;
 - 🧾 Documentado e rastreável.
 
-> ❗ A responsabilidade é de quem coleta — e também de quem codifica.
+> ❗ A responsabilidade é de quem coleta e também de quem codifica.
