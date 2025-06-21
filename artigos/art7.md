@@ -4,43 +4,57 @@ parent: Visão Geral
 nav_order: 2
 ---
 
-## Art. 7º – Hipóteses Legais para o Tratamento de Dados
+# ⚖️ Art. 7º – Hipóteses Legais para o Tratamento de Dados
 
-O artigo 7º da LGPD apresenta os **fundamentos jurídicos** que autorizam o uso de dados pessoais. Isso significa que **todo processamento de dados em um sistema** deve se apoiar em **uma das hipóteses descritas nesse artigo**, sob pena de ilegalidade.
-
-### Interpretação prática: como isso se aplica no desenvolvimento?
-
-A aplicação do Art. 7º começa no momento em que se decide **coletar qualquer tipo de dado** de uma pessoa.  
-Antes mesmo de escrever código, é necessário responder:  
-> "Qual é a base legal que justifica essa coleta ou esse armazenamento?"
-
-Essa escolha influencia não apenas a **forma de coleta**, mas também os **registros que devem ser salvos**, o **comportamento do sistema** diante de pedidos do usuário e até **regras de retenção**.
+<div style="border-left: 4px solid #4a90e2; padding: 0.8em 1em; background-color: #f5f8fa;">
+  O Art. 7º da LGPD apresenta os <strong>fundamentos jurídicos</strong> que autorizam o uso de dados pessoais.<br>
+  Nenhum dado pode ser tratado sem estar vinculado a uma base legal válida.
+</div>
 
 ---
 
-### Principais hipóteses e seus contextos
+## 🛠️ Como aplicar isso no desenvolvimento?
 
-| Hipótese (inciso) | Quando aplicar no sistema? |
-|-------------------|----------------------------|
-| I. Consentimento | Newsletter, campanhas, cookies |
-| II. Obrigação legal | Emissão de notas fiscais, declarações obrigatórias |
-| III. Políticas públicas | Sistemas de governo e convênios públicos |
-| IV. Pesquisa | Estudos acadêmicos com anonimização |
-| V. Execução de contrato | Entregas, pagamentos, suporte |
-| VI. Exercício de direitos | Registro de interações judiciais ou legais |
-| VII. Proteção da vida | Sistemas médicos, emergências |
-| VIII. Tutela da saúde | Prontuários, exames clínicos |
-| IX. Legítimo interesse | Prevenção a fraudes, marketing interno (com cautela) |
-| X. Proteção do crédito | Consulta a bureaus como Serasa, SPC |
+Antes mesmo de escrever código, é preciso responder:
+
+> ❓ <strong>“Qual é a base legal que justifica esta coleta ou tratamento de dados?”</strong>
+
+Essa decisão influencia:
+- 🧾 O que será registrado
+- 🔒 Como o dado será armazenado
+- ⏳ Por quanto tempo ele será retido
+- 🙋 Como o usuário pode interagir com esse dado
 
 ---
 
-### Aplicações técnicas: o que considerar ao programar
+## 📚 Principais hipóteses e seus contextos
 
-#### 1. Amarrar o tratamento à hipótese legal no código
+<table style="width:100%; border-collapse: collapse;">
+  <thead style="background-color: #e3f2fd;">
+    <tr>
+      <th style="text-align:left; padding: 8px;">📌 Hipótese (inciso)</th>
+      <th style="text-align:left; padding: 8px;">💡 Quando aplicar no sistema?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>I. Consentimento</td><td>Newsletter, campanhas, cookies</td></tr>
+    <tr><td>II. Obrigação legal</td><td>Emissão de nota fiscal, declarações obrigatórias</td></tr>
+    <tr><td>III. Políticas públicas</td><td>Sistemas governamentais, convênios</td></tr>
+    <tr><td>IV. Pesquisa</td><td>Estudos acadêmicos com anonimização</td></tr>
+    <tr><td>V. Execução de contrato</td><td>Entregas, pagamentos, suporte</td></tr>
+    <tr><td>VI. Exercício de direitos</td><td>Registro de interações judiciais ou legais</td></tr>
+    <tr><td>VII. Proteção da vida</td><td>Emergências, sistemas de saúde</td></tr>
+    <tr><td>VIII. Tutela da saúde</td><td>Prontuários, exames clínicos</td></tr>
+    <tr><td>IX. Legítimo interesse</td><td>Prevenção a fraudes, marketing interno (com RIPD)</td></tr>
+    <tr><td>X. Proteção do crédito</td><td>Consulta ao Serasa, SPC</td></tr>
+  </tbody>
+</table>
 
-- Defina campos como `legal_basis` e `purpose` em suas tabelas principais.
-- Documente o motivo de cada base legal em APIs e contratos de serviço.
+---
+
+## 💻 Aplicações técnicas: o que considerar ao programar
+
+### 1. Vincular tratamento à base legal no banco de dados
 
 ```sql
 CREATE TABLE data_purpose_log (
@@ -52,14 +66,16 @@ CREATE TABLE data_purpose_log (
 );
 ```
 
-#### 2. Consentimento: cuidados obrigatórios
+---
 
-- Checkbox desmarcado por padrão;
-- Registro da data/hora e finalidade específica;
-- Função para permitir revogação posterior.
+### 2. Consentimento: cuidados obrigatórios
 
-```javascript
-// Exemplo Express.js
+- ☑️ Checkbox desmarcado por padrão
+- 📅 Registro de data, hora e finalidade
+- 🔁 Função para revogação do consentimento
+
+```js
+// Exemplo usando Express.js
 app.post("/consent", async (req, res) => {
   const { userId, purpose } = req.body;
 
@@ -74,29 +90,32 @@ app.post("/consent", async (req, res) => {
 });
 ```
 
-#### 3. Outras hipóteses – como codificar de forma segura
+---
 
-- **Obrigação legal**: registre a base diretamente, sem exigir consentimento.
-- **Contrato**: registre aceite com versão e hash do documento aceito.
-- **Legítimo interesse**: exija a produção de um RIPD antes de ativar.
+### 3. Outras hipóteses: como aplicar com segurança
+
+| ⚙️ Hipótese              | 💡 Como programar |
+|--------------------------|------------------|
+| Obrigação legal          | Registre automaticamente, sem exigir consentimento |
+| Execução de contrato     | Log de aceite com versão/documento assinado |
+| Legítimo interesse       | Exija produção de um RIPD antes da implementação |
 
 ---
 
-### Cuidados recomendados para conformidade
+## 🧭 Recomendações para conformidade técnica
 
-| Recomendação                                   | Finalidade                    |
-|------------------------------------------------|-------------------------------|
-| Armazenar base legal por usuário               | Rastreabilidade legal         |
-| Isolar finalidades por módulo do sistema       | Clareza e segmentação         |
-| Permitir auditoria de decisões automáticas     | Transparência regulatória     |
-| Validar o uso contínuo da base legal a cada versão | Atualização e aderência    |
+| ✅ Recomendação                                  | 🧠 Objetivo                          |
+|--------------------------------------------------|-------------------------------------|
+| Armazenar base legal por usuário                 | Rastreabilidade                     |
+| Isolar finalidades por módulo                    | Clareza e organização do sistema    |
+| Permitir auditoria de decisões automáticas       | Transparência e prestação de contas |
+| Revisar a base legal a cada nova versão do sistema | Atualização contínua              |
 
 ---
 
-### Considerações finais
+## 🎯 Conclusão
 
-O artigo 7º é o **marco inicial da responsabilidade jurídica sobre os dados**.
+O Art. 7º é a **base jurídica central para todo sistema que trata dados pessoais**.  
+Sua missão como dev é garantir que **cada etapa técnica esteja amarrada a uma justificativa legal**.
 
-Sua função como desenvolvedor(a) é garantir que as decisões técnicas acompanhem a base legal definida — desde o front-end até o banco de dados.
-
-Fazer isso **não é só uma obrigação legal**, mas uma prática essencial de qualidade e ética no desenvolvimento de sistemas.
+> 🔐 **Privacidade não é só uma questão legal — é uma responsabilidade ética no desenvolvimento.**
