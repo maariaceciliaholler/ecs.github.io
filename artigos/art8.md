@@ -10,7 +10,7 @@ nav_order: 3
 > Cabe ao controlador **provar que ele foi dado livremente**.
 
 <div style="border-left: 4px solid #4a90e2; padding: 0.8em 1em; background-color: #f5f8fa;">
-  O Art. 8º da LGPD define **como deve ser obtido, documentado e revogado o consentimento** do titular.  
+  O Art. 8º da LGPD define <strong>como deve ser obtido, documentado e revogado o consentimento</strong> do titular.  
   Ele proíbe o uso de cláusulas genéricas, exige destaque em contratos e impõe que o titular seja informado sempre que houver mudanças nas finalidades.
 </div>
 
