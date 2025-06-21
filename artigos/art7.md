@@ -6,55 +6,50 @@ nav_order: 2
 
 # ⚖️ Art. 7º – Hipóteses Legais para o Tratamento de Dados
 
+> Nenhum dado pode ser tratado sem estar vinculado a uma base legal válida.  
+> O Art. 7º apresenta os **fundamentos jurídicos** que autorizam esse tratamento.
+
 <div style="border-left: 4px solid #4a90e2; padding: 0.8em 1em; background-color: #f5f8fa;">
-  O Art. 7º da LGPD apresenta os <strong>fundamentos jurídicos</strong> que autorizam o uso de dados pessoais.<br>
-  Nenhum dado pode ser tratado sem estar vinculado a uma base legal válida.
+  O Art. 7º lista <strong>dez hipóteses legais</strong>.  
+  Toda coleta, uso ou compartilhamento de dados pessoais deve estar coberto por uma delas.
 </div>
 
 ---
 
-## 🛠️ Como aplicar isso no desenvolvimento?
+## 👨‍💻 Impacto para desenvolvedores
 
-Antes mesmo de escrever código, é preciso responder:
+Ignorar a base legal **quebra todo o compliance**; portanto o dev precisa:
 
-> ❓ <strong>“Qual é a base legal que justifica esta coleta ou tratamento de dados?”</strong>
-
-Essa decisão influencia:
-- 🧾 O que será registrado
-- 🔒 Como o dado será armazenado
-- ⏳ Por quanto tempo ele será retido
-- 🙋 Como o usuário pode interagir com esse dado
+- Vincular cada fluxo de dados a uma hipótese (campo `legal_basis`);
+- Gravar logs que provem quando/por que o dado foi tratado;
+- Ajustar retenção e revogação de acordo com a base escolhida;
+- Reavaliar a base legal sempre que a finalidade mudar.
 
 ---
 
-## 📚 Principais hipóteses e seus contextos
+## 🔎 O que o Art. 7º exige?
 
-<table style="width:100%; border-collapse: collapse;">
-  <thead style="background-color: #e3f2fd;">
-    <tr>
-      <th style="text-align:left; padding: 8px;">📌 Hipótese (inciso)</th>
-      <th style="text-align:left; padding: 8px;">💡 Quando aplicar no sistema?</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>I. Consentimento</td><td>Newsletter, campanhas, cookies</td></tr>
-    <tr><td>II. Obrigação legal</td><td>Emissão de nota fiscal, declarações obrigatórias</td></tr>
-    <tr><td>III. Políticas públicas</td><td>Sistemas governamentais, convênios</td></tr>
-    <tr><td>IV. Pesquisa</td><td>Estudos acadêmicos com anonimização</td></tr>
-    <tr><td>V. Execução de contrato</td><td>Entregas, pagamentos, suporte</td></tr>
-    <tr><td>VI. Exercício de direitos</td><td>Registro de interações judiciais ou legais</td></tr>
-    <tr><td>VII. Proteção da vida</td><td>Emergências, sistemas de saúde</td></tr>
-    <tr><td>VIII. Tutela da saúde</td><td>Prontuários, exames clínicos</td></tr>
-    <tr><td>IX. Legítimo interesse</td><td>Prevenção a fraudes, marketing interno (com RIPD)</td></tr>
-    <tr><td>X. Proteção do crédito</td><td>Consulta ao Serasa, SPC</td></tr>
-  </tbody>
-</table>
+| Hipótese (inciso) | Quando usar | Pontos críticos |
+|-------------------|-------------|-----------------|
+| I. Consentimento | Newsletter, cookies | Deve ser específico e revogável |
+| II. Obrigação legal | Notas fiscais | Não exige consentimento, mas exige registro |
+| III. Políticas públicas | Sistemas governamentais | Base definida em lei/convênio oficial |
+| IV. Pesquisa | Estudos acadêmicos | Dados devem ser anonimizados sempre que possível |
+| V. Execução de contrato | Entregas, suporte | Provar a relação contratual |
+| VI. Exercício de direitos | Processos judiciais | Guardar documentos comprobatórios |
+| VII. Proteção da vida | Emergências médicas | Registrar motivo e duração do uso |
+| VIII. Tutela da saúde | Prontuários | Respeitar sigilo profissional |
+| IX. Legítimo interesse | Prevenção a fraudes | Precisa de RIPD e balança de interesses |
+| X. Proteção do crédito | Consulta a bureaus | Limitar escopo ao necessário |
 
 ---
 
-## 💻 Aplicações técnicas: o que considerar ao programar
+## 💡 Boas Práticas para cada hipótese
 
-### 1. Vincular tratamento à base legal no banco de dados
+### 1. Definir a base legal **desde o design**
+
+- 🔍 Campo obrigatório `legal_basis` em formulários & APIs.  
+- 🗂️ Tabela de rastreio:
 
 ```sql
 CREATE TABLE data_purpose_log (
@@ -66,31 +61,21 @@ CREATE TABLE data_purpose_log (
 );
 ```
 
----
+### 2. Consentimento (inciso I) com segurança
 
-### 2. Consentimento: cuidados obrigatórios
-
-- ☑️ Checkbox desmarcado por padrão
-- 📅 Registro de data, hora e finalidade
-- 🔁 Função para revogação do consentimento
+- ☑️ Checkbox desmarcado por padrão;  
+- 📜 Termo separado e claro;  
+- 🔄 Endpoint de revogação sempre disponível:
 
 ```js
-// Exemplo usando Express.js
-app.post("/consent", async (req, res) => {
-  const { userId, purpose } = req.body;
-
-  await db("consents").insert({
-    user_id: userId,
-    legal_basis: "consent",
-    purpose,
-    consented_at: new Date()
-  });
-
-  res.status(201).send({ status: "registrado" });
+app.post("/consent/revoke", async (req, res) => {
+  const { userId } = req.body;
+  await db("consents")
+    .where({ user_id: userId, revoked_at: null })
+    .update({ revoked_at: new Date() });
+  res.status(200).send({ status: "revogado" });
 });
 ```
-
----
 
 ### 3. Outras hipóteses: como aplicar com segurança
 
@@ -102,20 +87,13 @@ app.post("/consent", async (req, res) => {
 
 ---
 
-## 🧭 Recomendações para conformidade técnica
-
-| ✅ Recomendação                                  | 🧠 Objetivo                          |
-|--------------------------------------------------|-------------------------------------|
-| Armazenar base legal por usuário                 | Rastreabilidade                     |
-| Isolar finalidades por módulo                    | Clareza e organização do sistema    |
-| Permitir auditoria de decisões automáticas       | Transparência e prestação de contas |
-| Revisar a base legal a cada nova versão do sistema | Atualização contínua              |
-
----
-
 ## 🎯 Conclusão
 
-O Art. 7º é a **base jurídica central para todo sistema que trata dados pessoais**.  
-Sua missão como dev é garantir que **cada etapa técnica esteja amarrada a uma justificativa legal**.
+O Art. 7º é o **ponto de partida jurídico** de qualquer sistema que trata dados pessoais.  
+Seu papel como dev é garantir que:
 
-> 🔐 **Privacidade não é só uma questão legal — é uma responsabilidade ética no desenvolvimento.**
+1. Cada dado possua uma base legal explícita;  
+2. A implementação respeite os requisitos de cada hipótese;  
+3. Logs e provas estejam sempre à mão em caso de auditoria.
+
+> 🔐 **Privacidade não é só lei, é qualidade de software.**
