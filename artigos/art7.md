@@ -4,6 +4,10 @@ parent: Visão Geral
 nav_order: 2
 ---
 
+<style>
+  html { font-size: 125%; }
+</style>
+
 # ⚖️ Art. 7º – Hipóteses Legais para o Tratamento de Dados
 
 > Nenhum dado pode ser tratado sem estar vinculado a uma base legal válida.  
@@ -29,18 +33,18 @@ Ignorar a base legal **quebra todo o compliance**; portanto o dev precisa:
 
 ## 🔎 O que o Art. 7º exige?
 
-| Hipótese (inciso) | Quando usar | Pontos críticos |
-|-------------------|-------------|-----------------|
-| I. Consentimento | Newsletter, cookies | Deve ser específico e revogável |
-| II. Obrigação legal | Notas fiscais | Não exige consentimento, mas exige registro |
-| III. Políticas públicas | Sistemas governamentais | Base definida em lei/convênio oficial |
-| IV. Pesquisa | Estudos acadêmicos | Dados devem ser anonimizados sempre que possível |
-| V. Execução de contrato | Entregas, suporte | Provar a relação contratual |
-| VI. Exercício de direitos | Processos judiciais | Guardar documentos comprobatórios |
-| VII. Proteção da vida | Emergências médicas | Registrar motivo e duração do uso |
-| VIII. Tutela da saúde | Prontuários | Respeitar sigilo profissional |
-| IX. Legítimo interesse | Prevenção a fraudes | Precisa de RIPD e balança de interesses |
-| X. Proteção do crédito | Consulta a bureaus | Limitar escopo ao necessário |
+| Hipótese (inciso)         | Quando usar             | Pontos críticos                                  |
+| ------------------------- | ----------------------- | ------------------------------------------------ |
+| I. Consentimento          | Newsletter, cookies     | Deve ser específico e revogável                  |
+| II. Obrigação legal       | Notas fiscais           | Não exige consentimento, mas exige registro      |
+| III. Políticas públicas   | Sistemas governamentais | Base definida em lei/convênio oficial            |
+| IV. Pesquisa              | Estudos acadêmicos      | Dados devem ser anonimizados sempre que possível |
+| V. Execução de contrato   | Entregas, suporte       | Provar a relação contratual                      |
+| VI. Exercício de direitos | Processos judiciais     | Guardar documentos comprobatórios                |
+| VII. Proteção da vida     | Emergências médicas     | Registrar motivo e duração do uso                |
+| VIII. Tutela da saúde     | Prontuários             | Respeitar sigilo profissional                    |
+| IX. Legítimo interesse    | Prevenção a fraudes     | Precisa de RIPD e balança de interesses          |
+| X. Proteção do crédito    | Consulta a bureaus      | Limitar escopo ao necessário                     |
 
 ---
 
@@ -48,7 +52,7 @@ Ignorar a base legal **quebra todo o compliance**; portanto o dev precisa:
 
 ### 1. Definir a base legal **desde o design**
 
-- 🔍 Campo obrigatório `legal_basis` em formulários & APIs.  
+- 🔍 Campo obrigatório `legal_basis` em formulários & APIs.
 - 🗂️ Tabela de rastreio:
 
 ```sql
@@ -63,8 +67,8 @@ CREATE TABLE data_purpose_log (
 
 ### 2. Consentimento (inciso I) com segurança
 
-- ☑️ Checkbox desmarcado por padrão;  
-- 📜 Termo separado e claro;  
+- ☑️ Checkbox desmarcado por padrão;
+- 📜 Termo separado e claro;
 - 🔄 Endpoint de revogação sempre disponível:
 
 ```js
@@ -79,11 +83,11 @@ app.post("/consent/revoke", async (req, res) => {
 
 ### 3. Outras hipóteses: como aplicar com segurança
 
-| ⚙️ Hipótese              | 💡 Como programar |
-|--------------------------|------------------|
-| Obrigação legal          | Registre automaticamente, sem exigir consentimento |
-| Execução de contrato     | Log de aceite com versão/documento assinado |
-| Legítimo interesse       | Exija produção de um RIPD antes da implementação |
+| ⚙️ Hipótese          | 💡 Como programar                                  |
+| -------------------- | -------------------------------------------------- |
+| Obrigação legal      | Registre automaticamente, sem exigir consentimento |
+| Execução de contrato | Log de aceite com versão/documento assinado        |
+| Legítimo interesse   | Exija produção de um RIPD antes da implementação   |
 
 ---
 
@@ -92,8 +96,8 @@ app.post("/consent/revoke", async (req, res) => {
 O Art. 7º é o **ponto de partida jurídico** de qualquer sistema que trata dados pessoais.  
 Seu papel como dev é garantir que:
 
-1. Cada dado possua uma base legal explícita;  
-2. A implementação respeite os requisitos de cada hipótese;  
+1. Cada dado possua uma base legal explícita;
+2. A implementação respeite os requisitos de cada hipótese;
 3. Logs e provas estejam sempre à mão em caso de auditoria.
 
 > 🔐 **Privacidade não é só lei, é qualidade de software.**
