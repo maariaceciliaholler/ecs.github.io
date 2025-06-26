@@ -6,10 +6,6 @@ nav_order: 2
 
 # ⚖️ Art. 7º – Hipóteses Legais para o Tratamento de Dados
 
-<style>
-  html { font-size: 125%; }
-</style>
-
 > Nenhum dado pode ser tratado sem estar vinculado a uma base legal válida.  
 > O Art. 7º apresenta os **fundamentos jurídicos** que autorizam esse tratamento.
 
