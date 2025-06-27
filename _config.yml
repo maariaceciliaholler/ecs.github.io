@@ -1,5 +1,7 @@
 title: LGPD
 remote_theme: just-the-docs/just-the-docs
+style:
+  custom_css: "assets/css/custom.css"
 aux_links:
   Código-fonte no GitHub: https://github.com/maariaceciliaholler/ecs.github.io
 footer_content: "© 2025 • Manual LGPD – Bases Legais e Consentimento"
