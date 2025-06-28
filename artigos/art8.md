@@ -6,12 +6,12 @@ nav_order: 3
 
 # ✅ Art. 8º – Regras para o Consentimento
 
-> O consentimento deve ser claro, destacado, específico e revogável.  
-> Cabe ao controlador **provar que ele foi dado livremente**.
+> O Art. 8º da LGPD define que o consentimento não pode ser escondido nem genérico. Ele deve ser claro, destacado, específico e revogável, ou seja, o usuário precisa saber exatamente para que está autorizando o uso dos dados, e deve conseguir retirar essa autorização a qualquer momento.
+
+> Além disso, o sistema ou site que coleta os dados precisa provar que o consentimento foi dado livremente. Isso significa guardar logs, registros ou marcações que demonstrem quem autorizou, quando e para qual finalidade. 
 
 <div style="border-left: 4px solid #4a90e2; padding: 0.8em 1em; background-color: #f5f8fa;">
-  O Art. 8º da LGPD define <strong>como deve ser obtido, documentado e revogado o consentimento</strong> do titular.  
-  Ele proíbe o uso de cláusulas genéricas, exige destaque em contratos e impõe que o titular seja informado sempre que houver mudanças nas finalidades.
+  O Art. 8º da LGPD proíbe o uso de cláusulas genéricas, exige destaque em contratos e impõe que o titular seja informado sempre que houver mudanças nas finalidades.
 </div>
 
 ---
