@@ -34,29 +34,6 @@ Cada artigo tem sua própria página com explicações e dicas específicas para
 
 ---
 
-## 🧩 Visual na prática
-
-Este manual foca na aplicação **técnica e real** dos artigos.  
-Abaixo, veja como um sistema pode representar papéis definidos pela LGPD:
-
-<img src="/ecs.github.io/img/encarregado-funcoes.png" alt="Painel com papéis LGPD" width="480"/>
-
-<p style="font-size: 0.9em; color: #555;">
-  <em>
-    Ilustração de um painel de sistema que atribui funções a usuários, como "Dono", "Administrador", "Analista", "Apenas Visualização" e, em destaque, o <strong>Encarregado de Dados</strong>.  
-    Essa representação visual se conecta diretamente aos Artigos 7º a 10 da LGPD, que exigem:
-    <ul style="margin-top: 0.5em;">
-      <li><strong>Art. 7º:</strong> que o tratamento esteja vinculado a uma base legal clara e rastreável.</li>
-      <li><strong>Art. 8º:</strong> que o consentimento, se aplicável, seja coletado de forma informada e gerenciável.</li>
-      <li><strong>Art. 9º:</strong> que o titular receba informações claras sobre quem trata seus dados e para qual finalidade.</li>
-      <li><strong>Art. 10:</strong> que o uso por legítimo interesse considere o equilíbrio com os direitos do titular.</li>
-    </ul>
-    O destaque da função <strong>Encarregado de Dados</strong> evidencia a importância da responsabilidade e do ponto de contato com o titular — fundamental para cumprir os princípios de transparência e prestação de contas previstos nesses artigos.
-  </em>
-</p>
-
----
-
 <footer style="font-size: 0.9em; color: #555;">
 📌 Manual prático da LGPD focado em desenvolvedores.  
 🔗 <a href="https://github.com/maariaceciliaholler/ecs.github.io">Acesse o repositório no GitHub</a>
