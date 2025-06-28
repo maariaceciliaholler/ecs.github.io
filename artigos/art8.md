@@ -102,7 +102,7 @@ app.post("/consent/revoke", async (req, res) => {
 
 Soluções automatizadas permitem coletar e revogar consentimentos com **código integrado ao site**:
 
-<img src="../img/script-integracao.png" alt="LGPD" width="500"/>
+<img src="../img/consentimento.png" alt="LGPD" width="500"/>
 <p style="font-size: 0.9em; color: #555;"><em>Exemplo de consentimento.</em></p>
 
 ---
