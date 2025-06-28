@@ -70,6 +70,10 @@ Tratar dados com base em legítimo interesse exige justificativa clara e transpa
 - 🔗 Informe quais empresas/parceiros terão acesso aos dados.
 - 💡 Exemplo: exibir na interface ou política:  
   _“Compartilhamos seus dados com Google Analytics e Mailchimp para análise e envio de e-mails.”_
+  
+![Captura de tela 2025-06-27 213100](https://github.com/user-attachments/assets/e27a43e2-84ba-45ea-b3b4-931654ccb040)
+
+
 
 ---
 
