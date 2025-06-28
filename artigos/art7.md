@@ -44,6 +44,17 @@ Ignorar a base legal **quebra todo o compliance**; portanto o dev precisa:
 
 ---
 
+
+## 📊 Representação prática
+
+O Art. 7º permite tratar dados com base em **diferentes hipóteses legais**, sendo o consentimento uma delas.  
+Abaixo, um exemplo de ferramenta que categoriza os dados e aplica bloqueio automático por base legal:
+
+<img src="../img/consentimento-cookies.png" alt="Consentimento granular e cookies" width="500"/>
+<p style="font-size: 0.9em; color: #555;"><em>Classificação de cookies por base legal: funcional, marketing, estatística etc.</em></p>
+
+---
+
 ## 💡 Boas Práticas para cada hipótese
 
 ### 1. Definir a base legal **desde o design**

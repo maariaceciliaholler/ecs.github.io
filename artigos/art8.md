@@ -96,8 +96,17 @@ app.post("/consent/revoke", async (req, res) => {
   res.status(200).send({ status: "revogado" });
 });
 ```
+---
+
+## 🧠 Exemplo de integração de consentimento
+
+Soluções automatizadas permitem coletar e revogar consentimentos com **código integrado ao site**:
+
+<img src="../img/script-integracao.png" alt="Script LGPD" width="500"/>
+<p style="font-size: 0.9em; color: #555;"><em>Exemplo de script para coletar e controlar o consentimento do titular.</em></p>
 
 ---
+
 
 ### 4. Atualização de consentimento
 
