@@ -3,6 +3,7 @@ title: Visão Geral
 nav_order: 1
 has_children: true
 ---
+<link rel="icon" type="image/png" href="/img/icon.png">
 
 # 📘 Bases Legais e Consentimento (Art. 7º a 10º)
 
@@ -25,12 +26,12 @@ has_children: true
 
 Cada artigo tem sua própria página com explicações e dicas específicas para quem lida com formulários, APIs, banco de dados e segurança de dados.
 
-| 🔢 Artigo | Tema | Link |
-|----------|------|------|
-| 7º | Bases legais para tratar dados pessoais | [Acessar](artigos/art7.md) |
-| 8º | Consentimento do titular | [Acessar](artigos/art8.md) |
-| 9º | Transparência e informações obrigatórias | [Acessar](artigos/art9.md) |
-| 10 | Uso com base em legítimo interesse | [Acessar](artigos/art10.md) |
+| 🔢 Artigo | Tema | Link | Lei Oficial |
+|----------|------|------|-------------|
+| 7º | Bases legais para tratar dados pessoais | [Acessar](artigos/art7.md) | [Art. 7º](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm#art7) |
+| 8º | Consentimento do titular              | [Acessar](artigos/art8.md) | [Art. 8º](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm#art8) |
+| 9º | Transparência e informações obrigatórias | [Acessar](artigos/art9.md) | [Art. 9º](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm#art9) |
+| 10 | Uso com base em legítimo interesse    | [Acessar](artigos/art10.md) | [Art. 10](https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm#art10) |
 
 ---
 
@@ -39,7 +40,7 @@ Cada artigo tem sua própria página com explicações e dicas específicas para
 Este manual foca na aplicação **técnica e real** dos artigos.  
 Abaixo, veja como um sistema pode representar papéis definidos pela LGPD:
 
-<img src="../img/encarregado-funcoes.png" alt="Painel com papéis LGPD" width="480"/>
+<img src="/img/encarregado-funcoes.png" alt="Painel com papéis LGPD" width="480"/>
 <p style="font-size: 0.9em; color: #555;"><em>Painel com funções como Encarregado de Dados, Analista e Visualizador.</em></p>
 
 ---
