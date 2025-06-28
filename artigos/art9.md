@@ -98,3 +98,16 @@ CREATE TABLE transparency_audit (
 Exemplo de apresentação na tela:
 
 <img src="../img/image.png" alt="Direitos do titular" width="320"/>
+
+## 🎯 Conclusão
+
+O Art. 9º exige que a privacidade seja também visível e compreensível.
+Não basta proteger, é preciso informar e provar que o usuário sabe o que está sendo feito.
+
+Como dev, você deve garantir que:
+
+- 📢 O titular entenda claramente como seus dados são tratados;
+- 📊 As informações estejam disponíveis e atualizadas;
+- 🧾 Registros e evidências estejam prontos para qualquer auditoria.
+
+> 🔐 **Transparência não é um banner de cookies. É arquitetura, UX e responsabilidade.**
