@@ -3,7 +3,7 @@ title: Visão Geral
 nav_order: 1
 has_children: true
 ---
-<link rel="icon" type="image/png" href="/img/icon.png">
+<link rel="icon" type="image/png" href="/ecs.github.io/img/icon.png">
 
 # 📘 Bases Legais e Consentimento (Art. 7º a 10º)
 
@@ -40,7 +40,7 @@ Cada artigo tem sua própria página com explicações e dicas específicas para
 Este manual foca na aplicação **técnica e real** dos artigos.  
 Abaixo, veja como um sistema pode representar papéis definidos pela LGPD:
 
-<img src="/img/encarregado-funcoes.png" alt="Painel com papéis LGPD" width="480"/>
+<img src="/ecs.github.io/img/encarregado-funcoes.png"  alt="Painel com papéis LGPD" width="480"/>
 <p style="font-size: 0.9em; color: #555;"><em>Painel com funções como Encarregado de Dados, Analista e Visualizador.</em></p>
 
 ---
